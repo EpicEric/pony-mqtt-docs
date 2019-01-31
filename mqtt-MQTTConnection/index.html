@@ -1818,20 +1818,20 @@ Default is <code>None</code>.</li>
 
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
-<li>auth': <a href="https://stdlib.ponylang.io/builtin-AmbientAuth.md">AmbientAuth</a> val</li>
+<li>auth': <a href="https://stdlib.ponylang.io/builtin-AmbientAuth/">AmbientAuth</a> val</li>
 <li>notify': <a href="../mqtt-MQTTConnectionNotify/">MQTTConnectionNotify</a> iso</li>
-<li>host': <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val</li>
-<li>port': <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val = seq</li>
-<li>keepalive': <a href="https://stdlib.ponylang.io/builtin-U16.md">U16</a> val = seq</li>
+<li>host': <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
+<li>port': <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val = seq</li>
+<li>keepalive': <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val = seq</li>
 <li>version': (<a href="../mqtt-MQTTv31/">MQTTv31</a> val | <a href="../mqtt-MQTTv311/">MQTTv311</a> val) = seq</li>
-<li>retry_connection': <a href="https://stdlib.ponylang.io/builtin-U64.md">U64</a> val = seq</li>
-<li>clean_session': <a href="https://stdlib.ponylang.io/builtin-Bool.md">Bool</a> val = seq</li>
-<li>sslctx': (<a href="https://stdlib.ponylang.io/net-ssl-SSLContext.md">SSLContext</a> val | <a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val) = seq</li>
-<li>sslhost': <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val = seq</li>
-<li>will_packet': (<a href="../mqtt-MQTTPacket/">MQTTPacket</a> val | <a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val) = seq</li>
-<li>client_id': <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val = seq</li>
-<li>user': (<a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val | <a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val) = seq</li>
-<li>pass': (<a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val | <a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val) = seq</li>
+<li>retry_connection': <a href="https://stdlib.ponylang.io/builtin-U64/">U64</a> val = seq</li>
+<li>clean_session': <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = seq</li>
+<li>sslctx': (<a href="https://stdlib.ponylang.io/net-ssl-SSLContext/">SSLContext</a> val | <a href="https://stdlib.ponylang.io/builtin-None/">None</a> val) = seq</li>
+<li>sslhost': <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val = seq</li>
+<li>will_packet': (<a href="../mqtt-MQTTPacket/">MQTTPacket</a> val | <a href="https://stdlib.ponylang.io/builtin-None/">None</a> val) = seq</li>
+<li>client_id': <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val = seq</li>
+<li>user': (<a href="https://stdlib.ponylang.io/builtin-String/">String</a> val | <a href="https://stdlib.ponylang.io/builtin-None/">None</a> val) = seq</li>
+<li>pass': (<a href="https://stdlib.ponylang.io/builtin-String/">String</a> val | <a href="https://stdlib.ponylang.io/builtin-None/">None</a> val) = seq</li>
 </ul>
 <h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1839,17 +1839,17 @@ Default is <code>None</code>.</li>
 </ul>
 <hr />
 <h2 id="public-fields">Public fields<a class="headerlink" href="#public-fields" title="Permanent link">&para;</a></h2>
-<h3 id="let-auth-ambientauth-val">let auth: <a href="https://stdlib.ponylang.io/builtin-AmbientAuth.md">AmbientAuth</a> val<a class="headerlink" href="#let-auth-ambientauth-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-auth-ambientauth-val">let auth: <a href="https://stdlib.ponylang.io/builtin-AmbientAuth/">AmbientAuth</a> val<a class="headerlink" href="#let-auth-ambientauth-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/connection/#L24">[Source]</a></span></p>
 <p>The connection authority used in the TCP backend. Usually, this value is a
 cast from <code>env.root</code>.</p>
 <hr />
-<h3 id="let-host-string-val">let host: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val<a class="headerlink" href="#let-host-string-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-host-string-val">let host: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val<a class="headerlink" href="#let-host-string-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/connection/#L30">[Source]</a></span></p>
 <p>The host where the MQTT broker is located, such as <code>localhost</code>,
 <code>37.187.106.16</code>, or <code>test.mosquitto.org</code>.</p>
 <hr />
-<h3 id="let-port-string-val">let port: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val<a class="headerlink" href="#let-port-string-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-port-string-val">let port: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val<a class="headerlink" href="#let-port-string-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/connection/#L36">[Source]</a></span></p>
 <p>The port for the MQTT service. By default, most brokers use port <code>1883</code> for
 unsecure connections.</p>
@@ -1866,7 +1866,7 @@ TCP connections.</p>
 
 <h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li>send_will: <a href="https://stdlib.ponylang.io/builtin-Bool.md">Bool</a> val = seq</li>
+<li>send_will: <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = seq</li>
 </ul>
 <hr />
 <h3 id="subscribe">subscribe<a class="headerlink" href="#subscribe" title="Permanent link">&para;</a></h3>
@@ -1880,8 +1880,8 @@ with the specified QoS level.</p>
 
 <h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li>topic: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val</li>
-<li>qos: <a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val = seq</li>
+<li>topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
+<li>qos: <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val = seq</li>
 </ul>
 <hr />
 <h3 id="unsubscribe">unsubscribe<a class="headerlink" href="#unsubscribe" title="Permanent link">&para;</a></h3>
@@ -1893,7 +1893,7 @@ with the specified QoS level.</p>
 
 <h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>topic: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val</li>
+<li>topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
 </ul>
 <hr />
 <h3 id="publish">publish<a class="headerlink" href="#publish" title="Permanent link">&para;</a></h3>
@@ -1928,7 +1928,7 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/net-NetAddress.md">NetAddress</a> val ?</li>
+<li><a href="https://stdlib.ponylang.io/net-NetAddress/">NetAddress</a> val ?</li>
 </ul>
 <hr />
 <h3 id="remote_address">remote_address<a class="headerlink" href="#remote_address" title="Permanent link">&para;</a></h3>
@@ -1941,7 +1941,7 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/net-NetAddress.md">NetAddress</a> val ?</li>
+<li><a href="https://stdlib.ponylang.io/net-NetAddress/">NetAddress</a> val ?</li>
 </ul>
 <hr />
 <h2 id="private-behaviours">Private Behaviours<a class="headerlink" href="#private-behaviours" title="Permanent link">&para;</a></h2>
@@ -1955,9 +1955,9 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection.md">TCPConnection</a> tag</li>
-<li>local_address': <a href="https://stdlib.ponylang.io/net-NetAddress.md">NetAddress</a> val</li>
-<li>remote_address': <a href="https://stdlib.ponylang.io/net-NetAddress.md">NetAddress</a> val</li>
+<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection/">TCPConnection</a> tag</li>
+<li>local_address': <a href="https://stdlib.ponylang.io/net-NetAddress/">NetAddress</a> val</li>
+<li>remote_address': <a href="https://stdlib.ponylang.io/net-NetAddress/">NetAddress</a> val</li>
 </ul>
 <hr />
 <h3 id="_connect_failed">_connect_failed<a class="headerlink" href="#_connect_failed" title="Permanent link">&para;</a></h3>
@@ -1968,7 +1968,7 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection.md">TCPConnection</a> tag</li>
+<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection/">TCPConnection</a> tag</li>
 </ul>
 <hr />
 <h3 id="_closed">_closed<a class="headerlink" href="#_closed" title="Permanent link">&para;</a></h3>
@@ -1979,7 +1979,7 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection.md">TCPConnection</a> tag</li>
+<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection/">TCPConnection</a> tag</li>
 </ul>
 <hr />
 <h3 id="_auth_failed">_auth_failed<a class="headerlink" href="#_auth_failed" title="Permanent link">&para;</a></h3>
@@ -1990,7 +1990,7 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="parameters_8">Parameters<a class="headerlink" href="#parameters_8" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection.md">TCPConnection</a> tag</li>
+<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection/">TCPConnection</a> tag</li>
 </ul>
 <hr />
 <h3 id="_parse_packet">_parse_packet<a class="headerlink" href="#_parse_packet" title="Permanent link">&para;</a></h3>
@@ -2003,8 +2003,8 @@ topic, QoS, and retain flag.</p>
 
 <h4 id="parameters_9">Parameters<a class="headerlink" href="#parameters_9" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection.md">TCPConnection</a> tag</li>
-<li>data: <a href="https://stdlib.ponylang.io/builtin-Array.md">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val] val</li>
+<li>conn: <a href="https://stdlib.ponylang.io/net-TCPConnection/">TCPConnection</a> tag</li>
+<li>data: <a href="https://stdlib.ponylang.io/builtin-Array/">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val] val</li>
 </ul>
 <hr />
 <h3 id="_new_connection">_new_connection<a class="headerlink" href="#_new_connection" title="Permanent link">&para;</a></h3>
@@ -2039,11 +2039,11 @@ redoing its action.</p>
 
 <h4 id="parameters_10">Parameters<a class="headerlink" href="#parameters_10" title="Permanent link">&para;</a></h4>
 <ul>
-<li>clear_conn: <a href="https://stdlib.ponylang.io/builtin-Bool.md">Bool</a> val = seq</li>
+<li>clear_conn: <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = seq</li>
 </ul>
 <h4 id="returns_3">Returns<a class="headerlink" href="#returns_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_update_version">_update_version<a class="headerlink" href="#_update_version" title="Permanent link">&para;</a></h3>
@@ -2059,7 +2059,7 @@ redoing its action.</p>
 </ul>
 <h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_connect">_connect<a class="headerlink" href="#_connect" title="Permanent link">&para;</a></h3>
@@ -2072,7 +2072,7 @@ a TCP connection.</p>
 
 <h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_clean_timers">_clean_timers<a class="headerlink" href="#_clean_timers" title="Permanent link">&para;</a></h3>
@@ -2083,7 +2083,7 @@ a TCP connection.</p>
 
 <h4 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_disconnect">_disconnect<a class="headerlink" href="#_disconnect" title="Permanent link">&para;</a></h3>
@@ -2095,11 +2095,11 @@ a TCP connection.</p>
 
 <h4 id="parameters_12">Parameters<a class="headerlink" href="#parameters_12" title="Permanent link">&para;</a></h4>
 <ul>
-<li>send_will: <a href="https://stdlib.ponylang.io/builtin-Bool.md">Bool</a> val = seq</li>
+<li>send_will: <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = seq</li>
 </ul>
 <h4 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_subscribe">_subscribe<a class="headerlink" href="#_subscribe" title="Permanent link">&para;</a></h3>
@@ -2113,13 +2113,13 @@ a TCP connection.</p>
 
 <h4 id="parameters_13">Parameters<a class="headerlink" href="#parameters_13" title="Permanent link">&para;</a></h4>
 <ul>
-<li>topic: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val</li>
-<li>qos: <a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val = seq</li>
-<li>id: <a href="https://stdlib.ponylang.io/builtin-U16.md">U16</a> val = seq</li>
+<li>topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
+<li>qos: <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val = seq</li>
+<li>id: <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val = seq</li>
 </ul>
 <h4 id="returns_8">Returns<a class="headerlink" href="#returns_8" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_unsubscribe">_unsubscribe<a class="headerlink" href="#_unsubscribe" title="Permanent link">&para;</a></h3>
@@ -2132,12 +2132,12 @@ a TCP connection.</p>
 
 <h4 id="parameters_14">Parameters<a class="headerlink" href="#parameters_14" title="Permanent link">&para;</a></h4>
 <ul>
-<li>topic: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val</li>
-<li>id: <a href="https://stdlib.ponylang.io/builtin-U16.md">U16</a> val = seq</li>
+<li>topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
+<li>id: <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val = seq</li>
 </ul>
 <h4 id="returns_9">Returns<a class="headerlink" href="#returns_9" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_publish">_publish<a class="headerlink" href="#_publish" title="Permanent link">&para;</a></h3>
@@ -2153,7 +2153,7 @@ a TCP connection.</p>
 </ul>
 <h4 id="returns_10">Returns<a class="headerlink" href="#returns_10" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_puback">_puback<a class="headerlink" href="#_puback" title="Permanent link">&para;</a></h3>
@@ -2170,7 +2170,7 @@ a TCP connection.</p>
 </ul>
 <h4 id="returns_11">Returns<a class="headerlink" href="#returns_11" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_pubrec">_pubrec<a class="headerlink" href="#_pubrec" title="Permanent link">&para;</a></h3>
@@ -2187,7 +2187,7 @@ a TCP connection.</p>
 </ul>
 <h4 id="returns_12">Returns<a class="headerlink" href="#returns_12" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_pubrel">_pubrel<a class="headerlink" href="#_pubrel" title="Permanent link">&para;</a></h3>
@@ -2204,7 +2204,7 @@ a TCP connection.</p>
 </ul>
 <h4 id="returns_13">Returns<a class="headerlink" href="#returns_13" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_pubcomp">_pubcomp<a class="headerlink" href="#_pubcomp" title="Permanent link">&para;</a></h3>
@@ -2221,7 +2221,7 @@ a TCP connection.</p>
 </ul>
 <h4 id="returns_14">Returns<a class="headerlink" href="#returns_14" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
 <h3 id="_ping">_ping<a class="headerlink" href="#_ping" title="Permanent link">&para;</a></h3>
@@ -2233,7 +2233,7 @@ a TCP connection.</p>
 
 <h4 id="returns_15">Returns<a class="headerlink" href="#returns_15" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="https://stdlib.ponylang.io/builtin-None.md">None</a> val</li>
+<li><a href="https://stdlib.ponylang.io/builtin-None/">None</a> val</li>
 </ul>
 <hr />
                 

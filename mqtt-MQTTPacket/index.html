@@ -1167,11 +1167,11 @@ connection.</p>
 
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
-<li>topic': <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val</li>
-<li>message': <a href="https://stdlib.ponylang.io/builtin-Array.md">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val] val</li>
-<li>retain': <a href="https://stdlib.ponylang.io/builtin-Bool.md">Bool</a> val = seq</li>
-<li>qos': <a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val = seq</li>
-<li>id': <a href="https://stdlib.ponylang.io/builtin-U16.md">U16</a> val = seq</li>
+<li>topic': <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
+<li>message': <a href="https://stdlib.ponylang.io/builtin-Array/">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val] val</li>
+<li>retain': <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = seq</li>
+<li>qos': <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val = seq</li>
+<li>id': <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val = seq</li>
 </ul>
 <h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1179,21 +1179,21 @@ connection.</p>
 </ul>
 <hr />
 <h2 id="public-fields">Public fields<a class="headerlink" href="#public-fields" title="Permanent link">&para;</a></h2>
-<h3 id="let-topic-string-val">let topic: <a href="https://stdlib.ponylang.io/builtin-String.md">String</a> val<a class="headerlink" href="#let-topic-string-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-topic-string-val">let topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val<a class="headerlink" href="#let-topic-string-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/packet/#L8">[Source]</a></span></p>
 <p>The topic the packet is associated with. Be aware that user-defined topics
 may not follow the topic name rules of the protocol.</p>
 <hr />
-<h3 id="let-message-array91u8-val93-val">let message: <a href="https://stdlib.ponylang.io/builtin-Array.md">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val] val<a class="headerlink" href="#let-message-array91u8-val93-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-message-array91u8-val93-val">let message: <a href="https://stdlib.ponylang.io/builtin-Array/">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val] val<a class="headerlink" href="#let-message-array91u8-val93-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/packet/#L14">[Source]</a></span></p>
 <p>The packet's payload.</p>
 <hr />
-<h3 id="let-retain-bool-val">let retain: <a href="https://stdlib.ponylang.io/builtin-Bool.md">Bool</a> val<a class="headerlink" href="#let-retain-bool-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-retain-bool-val">let retain: <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val<a class="headerlink" href="#let-retain-bool-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/packet/#L19">[Source]</a></span></p>
 <p>The RETAIN flag in packets. If set to <code>true</code>, the server must retain the
 packet, sending it to late client subscriptions to the corresponding topic.</p>
 <hr />
-<h3 id="let-qos-u8-val">let qos: <a href="https://stdlib.ponylang.io/builtin-U8.md">U8</a> val<a class="headerlink" href="#let-qos-u8-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-qos-u8-val">let qos: <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val<a class="headerlink" href="#let-qos-u8-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/packet/#L25">[Source]</a></span></p>
 <p>The QoS of the packet, i.e. how the protocol guarantees dispatching. There are three possible values:</p>
 <ul>
@@ -1205,7 +1205,7 @@ handshake, without loss or duplication.</li>
 </ul>
 <p>Invalid values will be automatically set to 0.</p>
 <hr />
-<h3 id="let-id-u16-val">let id: <a href="https://stdlib.ponylang.io/builtin-U16.md">U16</a> val<a class="headerlink" href="#let-id-u16-val" title="Permanent link">&para;</a></h3>
+<h3 id="let-id-u16-val">let id: <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val<a class="headerlink" href="#let-id-u16-val" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/packet/#L38">[Source]</a></span></p>
 <p>The packet identifier, used for control between the client and the server.
 It should not be set by the user when sending a packet, since the value will
