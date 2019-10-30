@@ -36,7 +36,7 @@
     
     
       
-        <title>topic.pony - Pony-MQTT</title>
+        <title>_ssl.pony - Pony-MQTT</title>
       
     
     
@@ -115,7 +115,7 @@
                 Pony-MQTT
               </span>
               <span class="md-header-nav__topic">
-                topic.pony
+                _ssl.pony
               </span>
             
           
@@ -851,18 +851,11 @@
           
           
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-    <a href="./" title="topic.pony" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../topic/" title="topic.pony" class="md-nav__link">
       topic.pony
     </a>
-    
   </li>
 
         
@@ -942,11 +935,18 @@
           
           
 
+  
 
-  <li class="md-nav__item">
-    <a href="../_ssl/" title="_ssl.pony" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" title="_ssl.pony" class="md-nav__link md-nav__link--active">
       _ssl.pony
     </a>
+    
   </li>
 
         
@@ -980,94 +980,15 @@
               
                 
                 
-                  <h1>topic.pony</h1>
+                  <h1>_ssl.pony</h1>
                 
-                <pre><code class="pony-full-source">primitive MQTTTopic
-  &quot;&quot;&quot;
-  An utility to validate topics upon publishing or subscribing.
-  &quot;&quot;&quot;
+                <pre><code class="pony-full-source">use &quot;net&quot;
 
-  fun tag validate_publish(topic: String): Bool =&gt;
-    &quot;&quot;&quot;
-    Validates a PUBLISH topic, by verifying if it has no wildcard (`#` or `+`)
-    or null characters. Returns `true` if the topic is valid and `false`
-    otherwise.
-    &quot;&quot;&quot;
-    if (topic.size() &lt; 1) or (topic.size() &gt; 65535) then return false end
-    not(topic.contains(&quot;#&quot;))
-      and not(topic.contains(&quot;+&quot;))
-      and not(topic.contains(String.from_array([0x00])))
+interface val _SSLContext[A: Any iso]
+  fun client(hostname: String): A^ ?
 
-  fun tag validate_subscribe(topic: String): Bool =&gt;
-    &quot;&quot;&quot;
-    Validates a SUBSCRIBE/UNSUBSCRIBE filter, by verifying if it has wildcards
-    properly positioned between dashes (`#` or `+`) and no null characters.
-    Returns `true` if the topic is valid and `false` otherwise.
-    &quot;&quot;&quot;
-    if (topic.size() &lt; 1) or (topic.size() &gt; 65535) then return false end
-    if topic.contains(String.from_array([0x00])) then return false end
-    var was_slash: Bool = true
-    var was_plus: Bool = false
-    var was_hash: Bool = false
-    for byte in topic.values() do
-      if was_hash or (was_plus and (byte != '/')) then
-        return false
-      elseif byte == '/' then
-        was_slash = true
-        was_plus = false
-      elseif byte == '+' then
-        if not was_slash then return false end
-        was_slash = false
-        was_plus = true
-      elseif byte == '#' then
-        if not was_slash then return false end
-        was_hash = true
-      else
-        was_slash = false
-      end
-    end
-    true
-
-  fun tag match_topic(topic: String, filter: String): Bool =&gt;
-    &quot;&quot;&quot;
-    Checks if the provided PUBLISH topic in `name` matches the provided
-    SUBSCRIBE/UNSUBSCRIBE filter in `filter` and if they are both valid.
-    Returns `true` if the topic matches the filter and `false` otherwise.
-    &quot;&quot;&quot;
-    if validate_publish(topic) and validate_subscribe(filter) then
-      let topic_array: Array[String] val = topic.split_by(&quot;/&quot;)
-      let filter_array: Array[String] val = filter.split_by(&quot;/&quot;)
-      if topic_array.size() &lt; filter_array.size() then
-        return false
-      elseif topic_array.size() &gt; filter_array.size() then
-        try
-          if filter_array(filter_array.size() - 1)? != &quot;#&quot; then
-            return false
-          end
-        end
-      end
-      for i in filter_array.keys() do
-        try
-          let multi_wc = filter_array(i)? == &quot;#&quot;
-          let single_wc = filter_array(i)? == &quot;+&quot;
-          let equal_level = filter_array(i)? == topic_array(i)?
-          if (i == 0) and (topic_array(0)?(0)? == '$') then
-            if single_wc or multi_wc or not(equal_level) then
-              return false
-            end
-          elseif multi_wc then
-            return true
-          elseif not(single_wc) and not(equal_level) then
-            return false
-          end
-        else
-          false
-        end
-      end
-      true
-    else
-      false
-    end
+interface _SSLConnection[A: Any iso] is TCPConnectionNotify
+  new iso create(notify: TCPConnectionNotify iso, ssl: A)
 
 </code></pre>
                 
@@ -1090,7 +1011,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../utils/" title="utils.pony" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../_timer/" title="_timer.pony" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1099,19 +1020,19 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                utils.pony
+                _timer.pony
               </span>
             </div>
           </a>
         
         
-          <a href="../packet/" title="packet.pony" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../_connection_handler/" title="_connection_handler.pony" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                packet.pony
+                _connection_handler.pony
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.6">
     
     
       
@@ -40,13 +40,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.b80b25f7.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../../../assets/javascripts/modernizr.0b5df86e.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -311,8 +311,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../mqtt-_MQTTVersionDowngradable/" title="trait _MQTTVersionDowngradable" class="md-nav__link">
-      trait _MQTTVersionDowngradable
+    <a href="../../../mqtt-_MQTTVersionDowngradable/" title="interface _MQTTVersionDowngradable" class="md-nav__link">
+      interface _MQTTVersionDowngradable
     </a>
   </li>
 
@@ -707,6 +707,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../mqtt-MQTTConnectionInterface/" title="interface MQTTConnectionInterface" class="md-nav__link">
+      interface MQTTConnectionInterface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../mqtt-MQTTConnection/" title="actor MQTTConnection" class="md-nav__link">
       actor MQTTConnection
     </a>
@@ -745,6 +757,30 @@
   <li class="md-nav__item">
     <a href="../../../mqtt-_MQTTReconnectTimer/" title="class _MQTTReconnectTimer" class="md-nav__link">
       class _MQTTReconnectTimer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mqtt-_SSLContext/" title="interface _SSLContext" class="md-nav__link">
+      interface _SSLContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mqtt-_SSLConnection/" title="interface _SSLConnection" class="md-nav__link">
+      interface _SSLConnection
     </a>
   </li>
 
@@ -863,6 +899,18 @@
           
           
 
+
+  <li class="md-nav__item">
+    <a href="../connection_interface/" title="connection_interface.pony" class="md-nav__link">
+      connection_interface.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
   
 
 
@@ -886,6 +934,18 @@
   <li class="md-nav__item">
     <a href="../_timer/" title="_timer.pony" class="md-nav__link">
       _timer.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../_ssl/" title="_ssl.pony" class="md-nav__link">
+      _ssl.pony
     </a>
   </li>
 
@@ -925,10 +985,14 @@
                 <pre><code class="pony-full-source">use &quot;buffered&quot;
 use &quot;collections&quot;
 use &quot;net&quot;
-use &quot;net/ssl&quot;
 use &quot;time&quot;
 
-actor MQTTConnection
+// actor MQTTConnection[A: (None | _SSL) = None, B: (None | _SSLContext[A]) = None, C: (None | _SSLConnection[A]) = None]
+actor MQTTConnection[
+  A: Any iso = None iso,
+  B: (None | _SSLContext[A] val) = None,
+  C: (None | _SSLConnection[A]) = None]
+  is MQTTConnectionInterface
   &quot;&quot;&quot;
   An actor that handles the connection to the MQTT server in the background.
   When created, it establishes a TCP connection to the specified broker and
@@ -943,6 +1007,17 @@ actor MQTTConnection
   of all current state and attempt to establish a new connection.
 
   During execution, it may also raise one of many errors to the notify class.
+
+  In order to use the [`net-ssl`](https://github.com/ponylang/net-ssl) package,
+  declare this actor with the following type parameters:
+
+  ```pony
+  use &quot;net_ssl&quot;
+
+  ...
+
+  conn = MQTTConnection[SSL iso, SSLContext, SSLConnection](...)
+  ```
   &quot;&quot;&quot;
 
   let auth: AmbientAuth
@@ -974,7 +1049,7 @@ actor MQTTConnection
   &quot;&quot;&quot;
 
   let _clean_session: Bool
-  let _sslctx: (SSLContext | None)
+  let _sslctx: (B | None)
   let _sslhost: String
   let _will_packet: (MQTTPacket | None)
   let _client_id: String
@@ -1033,7 +1108,7 @@ actor MQTTConnection
     version': MQTTVersion = MQTTv311,
     retry_connection': U64 = 0,
     clean_session': Bool = true,
-    sslctx': (SSLContext | None) = None,
+    sslctx': (B | None) = None,
     sslhost': String = &quot;&quot;,
     will_packet': (MQTTPacket | None) = None,
     client_id': String = &quot;&quot;,
@@ -1161,7 +1236,7 @@ actor MQTTConnection
     if _is_connected and _retry_connection then
       _client.on_error(this, MQTTErrorConnectFailedRetry)
       let reconnect_timer = Timer(
-        _MQTTReconnectTimer(this), _reconnect_time, _reconnect_time)
+        _MQTTReconnectTimer[A, B, C](this), _reconnect_time, _reconnect_time)
       _reconnect_timer = reconnect_timer
       _timers(consume reconnect_timer)
     else
@@ -1176,7 +1251,7 @@ actor MQTTConnection
       if _retry_connection then
         _client.on_error(this, MQTTErrorSocketRetry)
         let reconnect_timer = Timer(
-          _MQTTReconnectTimer(this), 0, _reconnect_time)
+          _MQTTReconnectTimer[A, B, C](this), 0, _reconnect_time)
         _reconnect_timer = reconnect_timer
         _timers(consume reconnect_timer)
       else
@@ -1191,10 +1266,12 @@ actor MQTTConnection
   be _auth_failed(
     conn: TCPConnection)
   =&gt;
-    try
-      _sslctx as SSLContext
-      _client.on_error(this, MQTTErrorTLSAuthentication)
-      _end_connection(true)
+    iftype B &lt;: _SSLContext[A] then
+      try
+        _sslctx as B
+        _client.on_error(this, MQTTErrorTLSAuthentication)
+        _end_connection(true)
+      end
     end
 
   be _parse_packet(
@@ -1218,11 +1295,11 @@ actor MQTTConnection
           // Create a package resender timer and a keepalive timer
           _clean_timers()
           let resend_timer = Timer(
-            _MQTTPingTimer(this), _ping_time, _ping_time)
+            _MQTTPingTimer[A, B, C](this), _ping_time, _ping_time)
           _resend_timer = resend_timer
           _timers(consume resend_timer)
           let ping_timer = Timer(
-            _MQTTResendTimer(this), _resend_time, _resend_time)
+            _MQTTResendTimer[A, B, C](this), _resend_time, _resend_time)
           _ping_timer = ping_timer
           _timers(consume ping_timer)
           _client.on_connect(this, buffer.peek_u8(2)? == 0x01)
@@ -1301,7 +1378,8 @@ actor MQTTConnection
         if buffer.peek_u8(0)? != 0x90 then error end
         if buffer.size() != 5 then error end
         buffer.skip(2)?
-        let topic = _sub_topics.remove(buffer.u16_be()?)?._2._1
+        let topic_tuple = _sub_topics.remove(buffer.u16_be()?)?._2
+        let topic = topic_tuple._1
         if (buffer.peek_u8(0)? and 0x80) == 0x00 then
           _client.on_subscribe(this, topic, buffer.u8()? and 0x03)
         else
@@ -1371,23 +1449,34 @@ actor MQTTConnection
 
   be _new_connection() =&gt;
     _end_connection()
-    if not(_sslctx is None) then
-      try
-        let ssl = (_sslctx as SSLContext).client()?
-        TCPConnection(
-          auth,
-          SSLConnection(
-            _MQTTConnectionHandler(this, auth),
-            consume ssl),
-          host,
-          port)
-        return
+    iftype B &lt;: _SSLContext[A] val then
+      iftype C &lt;: _SSLConnection[A] then
+        if _sslctx isnt None then
+          try
+            let ssl = (_sslctx as B).client(_sslhost)?
+            TCPConnection(
+              auth,
+              C(
+                _MQTTConnectionHandler[A, B, C](this, auth),
+                consume ssl),
+              host,
+              port)
+            return
+          else
+            _client.on_error(this, MQTTErrorTLSConfiguration)
+            return
+          end
+        else
+          TCPConnection(
+            auth, _MQTTConnectionHandler[A, B, C](this, auth), host, port)
+        end
       else
-        _client.on_error(this, MQTTErrorTLSConfiguration)
-        return
+        TCPConnection(
+          auth, _MQTTConnectionHandler[A, B, C](this, auth), host, port)
       end
     else
-      TCPConnection(auth, _MQTTConnectionHandler(this, auth), host, port)
+      TCPConnection(
+        auth, _MQTTConnectionHandler[A, B, C](this, auth), host, port)
     end
 
   fun ref _connect() =&gt;
@@ -1774,7 +1863,7 @@ actor MQTTConnection
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../connection_notify/" title="connection_notify.pony" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../connection_interface/" title="connection_interface.pony" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1783,7 +1872,7 @@ actor MQTTConnection
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                connection_notify.pony
+                connection_interface.pony
               </span>
             </div>
           </a>
@@ -1825,7 +1914,7 @@ actor MQTTConnection
       
     </div>
     
-    <script src="../../../assets/javascripts/application.6f02ae1b.js"></script>
+    <script src="../../../assets/javascripts/application.c1ad9e36.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       

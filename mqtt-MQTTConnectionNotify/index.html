@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.6">
     
     
       
@@ -40,13 +40,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.b80b25f7.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../assets/javascripts/modernizr.0b5df86e.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -317,8 +317,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../mqtt-_MQTTVersionDowngradable/" title="trait _MQTTVersionDowngradable" class="md-nav__link">
-      trait _MQTTVersionDowngradable
+    <a href="../mqtt-_MQTTVersionDowngradable/" title="interface _MQTTVersionDowngradable" class="md-nav__link">
+      interface _MQTTVersionDowngradable
     </a>
   </li>
 
@@ -833,6 +833,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../mqtt-MQTTConnectionInterface/" title="interface MQTTConnectionInterface" class="md-nav__link">
+      interface MQTTConnectionInterface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../mqtt-MQTTConnection/" title="actor MQTTConnection" class="md-nav__link">
       actor MQTTConnection
     </a>
@@ -871,6 +883,30 @@
   <li class="md-nav__item">
     <a href="../mqtt-_MQTTReconnectTimer/" title="class _MQTTReconnectTimer" class="md-nav__link">
       class _MQTTReconnectTimer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mqtt-_SSLContext/" title="interface _SSLContext" class="md-nav__link">
+      interface _SSLContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mqtt-_SSLConnection/" title="interface _SSLConnection" class="md-nav__link">
+      interface _SSLConnection
     </a>
   </li>
 
@@ -989,6 +1025,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../src/mqtt/connection_interface/" title="connection_interface.pony" class="md-nav__link">
+      connection_interface.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../src/mqtt/connection/" title="connection.pony" class="md-nav__link">
       connection.pony
     </a>
@@ -1003,6 +1051,18 @@
   <li class="md-nav__item">
     <a href="../src/mqtt/_timer/" title="_timer.pony" class="md-nav__link">
       _timer.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../src/mqtt/_ssl/" title="_ssl.pony" class="md-nav__link">
+      _ssl.pony
     </a>
   </li>
 
@@ -1166,14 +1226,14 @@ connection and if <a href="https://www.hivemq.com/blog/mqtt-essentials-part-7-pe
 is available in the broker.</p>
 <p>This method must be implemented.</p>
 <pre><code class="pony">fun ref on_connect(
-  conn: MQTTConnection ref,
+  conn: MQTTConnectionInterface ref,
   session_present: Bool val)
 : None val
 </code></pre>
 
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 <li>session_present: <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val</li>
 </ul>
 <h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
@@ -1186,14 +1246,14 @@ is available in the broker.</p>
 <p>Called upon receiving a PUBLISH message from the broker. Receives the
 connection and said message.</p>
 <pre><code class="pony">fun ref on_message(
-  conn: MQTTConnection ref,
+  conn: MQTTConnectionInterface ref,
   packet: MQTTPacket val)
 : None val
 </code></pre>
 
 <h4 id="parameters_1">Parameters<a class="headerlink" href="#parameters_1" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 <li>packet: <a href="../mqtt-MQTTPacket/">MQTTPacket</a> val</li>
 </ul>
 <h4 id="returns_1">Returns<a class="headerlink" href="#returns_1" title="Permanent link">&para;</a></h4>
@@ -1206,14 +1266,14 @@ connection and said message.</p>
 <p>Called after succesfully publishing a message to the broker. Receives the
 connection and said message.</p>
 <pre><code class="pony">fun ref on_publish(
-  conn: MQTTConnection ref,
+  conn: MQTTConnectionInterface ref,
   packet: MQTTPacket val)
 : None val
 </code></pre>
 
 <h4 id="parameters_2">Parameters<a class="headerlink" href="#parameters_2" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 <li>packet: <a href="../mqtt-MQTTPacket/">MQTTPacket</a> val</li>
 </ul>
 <h4 id="returns_2">Returns<a class="headerlink" href="#returns_2" title="Permanent link">&para;</a></h4>
@@ -1226,7 +1286,7 @@ connection and said message.</p>
 <p>Called after successfully subscribing to a topic. Receives the connection,
 said topic, and the associated QoS level of the subscription (from 0 to 2).</p>
 <pre><code class="pony">fun ref on_subscribe(
-  conn: MQTTConnection ref,
+  conn: MQTTConnectionInterface ref,
   topic: String val,
   qos: U8 val)
 : None val
@@ -1234,7 +1294,7 @@ said topic, and the associated QoS level of the subscription (from 0 to 2).</p>
 
 <h4 id="parameters_3">Parameters<a class="headerlink" href="#parameters_3" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 <li>topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
 <li>qos: <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val</li>
 </ul>
@@ -1244,18 +1304,18 @@ said topic, and the associated QoS level of the subscription (from 0 to 2).</p>
 </ul>
 <hr />
 <h3 id="on_unsubscribe">on_unsubscribe<a class="headerlink" href="#on_unsubscribe" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L38">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L42">[Source]</a></span></p>
 <p>Called after successfully unsubscribing from a topic. Receives the
 connection and said topic.</p>
 <pre><code class="pony">fun ref on_unsubscribe(
-  conn: MQTTConnection ref,
+  conn: MQTTConnectionInterface ref,
   topic: String val)
 : None val
 </code></pre>
 
 <h4 id="parameters_4">Parameters<a class="headerlink" href="#parameters_4" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 <li>topic: <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
 </ul>
 <h4 id="returns_4">Returns<a class="headerlink" href="#returns_4" title="Permanent link">&para;</a></h4>
@@ -1264,17 +1324,17 @@ connection and said topic.</p>
 </ul>
 <hr />
 <h3 id="on_ping">on_ping<a class="headerlink" href="#on_ping" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L45">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L49">[Source]</a></span></p>
 <p>Called after a ping request is replied by the server. Receives the
 connection.</p>
 <pre><code class="pony">fun ref on_ping(
-  conn: MQTTConnection ref)
+  conn: MQTTConnectionInterface ref)
 : None val
 </code></pre>
 
 <h4 id="parameters_5">Parameters<a class="headerlink" href="#parameters_5" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 </ul>
 <h4 id="returns_5">Returns<a class="headerlink" href="#returns_5" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1282,19 +1342,19 @@ connection.</p>
 </ul>
 <hr />
 <h3 id="on_disconnect">on_disconnect<a class="headerlink" href="#on_disconnect" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L52">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L56">[Source]</a></span></p>
 <p>Called after the connection to the broker is closed by the user. Receives
 the connection. When disconnected, packets and subscriptions should no
 longer be sent, and session data may be lost unless reconnection is set
 and <code>clean_session'</code> is <code>false</code>.</p>
 <pre><code class="pony">fun ref on_disconnect(
-  conn: MQTTConnection ref)
+  conn: MQTTConnectionInterface ref)
 : None val
 </code></pre>
 
 <h4 id="parameters_6">Parameters<a class="headerlink" href="#parameters_6" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 </ul>
 <h4 id="returns_6">Returns<a class="headerlink" href="#returns_6" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1302,13 +1362,13 @@ and <code>clean_session'</code> is <code>false</code>.</p>
 </ul>
 <hr />
 <h3 id="on_error">on_error<a class="headerlink" href="#on_error" title="Permanent link">&para;</a></h3>
-<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L61">[Source]</a></span></p>
+<p><span class="source-link"><a href="../src/mqtt/connection_notify/#L65">[Source]</a></span></p>
 <p>Called when an error occurs. Receives the connection, the error code, and
 any additional byte array info if applicable.</p>
 <p>Some errors may result in the connection to the server being closed
 afterwards.</p>
 <pre><code class="pony">fun ref on_error(
-  conn: MQTTConnection ref,
+  conn: MQTTConnectionInterface ref,
   err: (MQTTErrorConnectConnected val | MQTTErrorConnectSocket val | MQTTErrorDisconnectDisconnected val | 
     MQTTErrorSubscribeTopic val | MQTTErrorSubscribeQoS val | MQTTErrorSubscribeConnected val | 
     MQTTErrorUnsubscribeTopic val | MQTTErrorUnsubscribeConnected val | MQTTErrorPublishTopic val | 
@@ -1318,13 +1378,13 @@ afterwards.</p>
     MQTTErrorConnectID val | MQTTErrorConnectServerRetry val | MQTTErrorConnectServer val | 
     MQTTErrorConnectAuthentication val | MQTTErrorConnectAuthorization val | MQTTErrorSubscribeFailure val | 
     MQTTErrorServerCode val | MQTTErrorUnknownCode val | MQTTErrorUnexpectedFormat val),
-  info: Array[U8 val] val = seq)
+  info: Array[U8 val] val = recover)
 : None val
 </code></pre>
 
 <h4 id="parameters_7">Parameters<a class="headerlink" href="#parameters_7" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> ref</li>
+<li>conn: <a href="../mqtt-MQTTConnectionInterface/">MQTTConnectionInterface</a> ref</li>
 <li>err: (<a href="../mqtt-MQTTErrorConnectConnected/">MQTTErrorConnectConnected</a> val | <a href="../mqtt-MQTTErrorConnectSocket/">MQTTErrorConnectSocket</a> val | <a href="../mqtt-MQTTErrorDisconnectDisconnected/">MQTTErrorDisconnectDisconnected</a> val | 
     <a href="../mqtt-MQTTErrorSubscribeTopic/">MQTTErrorSubscribeTopic</a> val | <a href="../mqtt-MQTTErrorSubscribeQoS/">MQTTErrorSubscribeQoS</a> val | <a href="../mqtt-MQTTErrorSubscribeConnected/">MQTTErrorSubscribeConnected</a> val | 
     <a href="../mqtt-MQTTErrorUnsubscribeTopic/">MQTTErrorUnsubscribeTopic</a> val | <a href="../mqtt-MQTTErrorUnsubscribeConnected/">MQTTErrorUnsubscribeConnected</a> val | <a href="../mqtt-MQTTErrorPublishTopic/">MQTTErrorPublishTopic</a> val | 
@@ -1334,7 +1394,7 @@ afterwards.</p>
     <a href="../mqtt-MQTTErrorConnectID/">MQTTErrorConnectID</a> val | <a href="../mqtt-MQTTErrorConnectServerRetry/">MQTTErrorConnectServerRetry</a> val | <a href="../mqtt-MQTTErrorConnectServer/">MQTTErrorConnectServer</a> val | 
     <a href="../mqtt-MQTTErrorConnectAuthentication/">MQTTErrorConnectAuthentication</a> val | <a href="../mqtt-MQTTErrorConnectAuthorization/">MQTTErrorConnectAuthorization</a> val | <a href="../mqtt-MQTTErrorSubscribeFailure/">MQTTErrorSubscribeFailure</a> val | 
     <a href="../mqtt-MQTTErrorServerCode/">MQTTErrorServerCode</a> val | <a href="../mqtt-MQTTErrorUnknownCode/">MQTTErrorUnknownCode</a> val | <a href="../mqtt-MQTTErrorUnexpectedFormat/">MQTTErrorUnexpectedFormat</a> val)</li>
-<li>info: <a href="https://stdlib.ponylang.io/builtin-Array/">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val] val = seq</li>
+<li>info: <a href="https://stdlib.ponylang.io/builtin-Array/">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val] val = recover</li>
 </ul>
 <h4 id="returns_7">Returns<a class="headerlink" href="#returns_7" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1376,13 +1436,13 @@ afterwards.</p>
           </a>
         
         
-          <a href="../mqtt-MQTTConnection/" title="actor MQTTConnection" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../mqtt-MQTTConnectionInterface/" title="interface MQTTConnectionInterface" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                actor MQTTConnection
+                interface MQTTConnectionInterface
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -1412,7 +1472,7 @@ afterwards.</p>
       
     </div>
     
-    <script src="../assets/javascripts/application.6f02ae1b.js"></script>
+    <script src="../assets/javascripts/application.c1ad9e36.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       

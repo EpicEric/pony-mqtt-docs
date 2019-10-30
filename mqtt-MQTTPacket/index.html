@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.6">
     
     
       
@@ -40,13 +40,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.b80b25f7.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../assets/javascripts/modernizr.0b5df86e.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -317,8 +317,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../mqtt-_MQTTVersionDowngradable/" title="trait _MQTTVersionDowngradable" class="md-nav__link">
-      trait _MQTTVersionDowngradable
+    <a href="../mqtt-_MQTTVersionDowngradable/" title="interface _MQTTVersionDowngradable" class="md-nav__link">
+      interface _MQTTVersionDowngradable
     </a>
   </li>
 
@@ -830,6 +830,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../mqtt-MQTTConnectionInterface/" title="interface MQTTConnectionInterface" class="md-nav__link">
+      interface MQTTConnectionInterface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../mqtt-MQTTConnection/" title="actor MQTTConnection" class="md-nav__link">
       actor MQTTConnection
     </a>
@@ -868,6 +880,30 @@
   <li class="md-nav__item">
     <a href="../mqtt-_MQTTReconnectTimer/" title="class _MQTTReconnectTimer" class="md-nav__link">
       class _MQTTReconnectTimer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mqtt-_SSLContext/" title="interface _SSLContext" class="md-nav__link">
+      interface _SSLContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mqtt-_SSLConnection/" title="interface _SSLConnection" class="md-nav__link">
+      interface _SSLConnection
     </a>
   </li>
 
@@ -986,6 +1022,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../src/mqtt/connection_interface/" title="connection_interface.pony" class="md-nav__link">
+      connection_interface.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../src/mqtt/connection/" title="connection.pony" class="md-nav__link">
       connection.pony
     </a>
@@ -1000,6 +1048,18 @@
   <li class="md-nav__item">
     <a href="../src/mqtt/_timer/" title="_timer.pony" class="md-nav__link">
       _timer.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../src/mqtt/_ssl/" title="_ssl.pony" class="md-nav__link">
+      _ssl.pony
     </a>
   </li>
 
@@ -1159,9 +1219,9 @@ connection.</p>
 <pre><code class="pony">new val create(
   topic': String val,
   message': Array[U8 val] val,
-  retain': Bool val = seq,
-  qos': U8 val = seq,
-  id': U16 val = seq)
+  retain': Bool val = false,
+  qos': U8 val = 0,
+  id': U16 val = 0)
 : MQTTPacket val^
 </code></pre>
 
@@ -1169,9 +1229,9 @@ connection.</p>
 <ul>
 <li>topic': <a href="https://stdlib.ponylang.io/builtin-String/">String</a> val</li>
 <li>message': <a href="https://stdlib.ponylang.io/builtin-Array/">Array</a>[<a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val] val</li>
-<li>retain': <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = seq</li>
-<li>qos': <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val = seq</li>
-<li>id': <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val = seq</li>
+<li>retain': <a href="https://stdlib.ponylang.io/builtin-Bool/">Bool</a> val = false</li>
+<li>qos': <a href="https://stdlib.ponylang.io/builtin-U8/">U8</a> val = 0</li>
+<li>id': <a href="https://stdlib.ponylang.io/builtin-U16/">U16</a> val = 0</li>
 </ul>
 <h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
@@ -1282,7 +1342,7 @@ be overwritten before being sent to the broker.</p>
       
     </div>
     
-    <script src="../assets/javascripts/application.6f02ae1b.js"></script>
+    <script src="../assets/javascripts/application.c1ad9e36.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       

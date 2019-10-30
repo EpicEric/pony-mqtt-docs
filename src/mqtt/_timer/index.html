@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.6">
     
     
       
@@ -40,13 +40,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.b80b25f7.css">
       
         <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../../../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../../../assets/javascripts/modernizr.0b5df86e.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -311,8 +311,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../../mqtt-_MQTTVersionDowngradable/" title="trait _MQTTVersionDowngradable" class="md-nav__link">
-      trait _MQTTVersionDowngradable
+    <a href="../../../mqtt-_MQTTVersionDowngradable/" title="interface _MQTTVersionDowngradable" class="md-nav__link">
+      interface _MQTTVersionDowngradable
     </a>
   </li>
 
@@ -707,6 +707,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../../../mqtt-MQTTConnectionInterface/" title="interface MQTTConnectionInterface" class="md-nav__link">
+      interface MQTTConnectionInterface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../../../mqtt-MQTTConnection/" title="actor MQTTConnection" class="md-nav__link">
       actor MQTTConnection
     </a>
@@ -745,6 +757,30 @@
   <li class="md-nav__item">
     <a href="../../../mqtt-_MQTTReconnectTimer/" title="class _MQTTReconnectTimer" class="md-nav__link">
       class _MQTTReconnectTimer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mqtt-_SSLContext/" title="interface _SSLContext" class="md-nav__link">
+      interface _SSLContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../../mqtt-_SSLConnection/" title="interface _SSLConnection" class="md-nav__link">
+      interface _SSLConnection
     </a>
   </li>
 
@@ -865,6 +901,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../connection_interface/" title="connection_interface.pony" class="md-nav__link">
+      connection_interface.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../connection/" title="connection.pony" class="md-nav__link">
       connection.pony
     </a>
@@ -887,6 +935,18 @@
       _timer.pony
     </a>
     
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../_ssl/" title="_ssl.pony" class="md-nav__link">
+      _ssl.pony
+    </a>
   </li>
 
         
@@ -924,7 +984,7 @@
                 
                 <pre><code class="pony-full-source">use &quot;time&quot;
 
-class _MQTTPingTimer is TimerNotify
+class _MQTTPingTimer[A: Any iso = None iso, B: (None | _SSLContext[A] val) = None, C: (None | _SSLConnection[A]) = None] is TimerNotify
   &quot;&quot;&quot;
   Timer to send PINGREQ messages to the server periodically. Currently, it
   fires at 75% of the keepalive time (i.e. if keepalive is set to 10 seconds,
@@ -932,39 +992,39 @@ class _MQTTPingTimer is TimerNotify
   30 seconds.
   &quot;&quot;&quot;
 
-  let _conn: MQTTConnection
+  let _conn: MQTTConnection[A, B, C]
 
-  new iso create(conn: MQTTConnection) =&gt;
+  new iso create(conn: MQTTConnection[A, B, C]) =&gt;
     _conn = conn
 
   fun ref apply(timer: Timer, count: U64): Bool =&gt;
     _conn._send_ping()
     true
 
-class _MQTTResendTimer is TimerNotify
+class _MQTTResendTimer[A: Any iso = None iso, B: (None | _SSLContext[A] val) = None, C: (None | _SSLConnection[A]) = None] is TimerNotify
   &quot;&quot;&quot;
   Timer to handle QoS, re-firing unacknowledged PUBLISH and SUBSCRIBE requests
   with the appropriate DUP flag. Currently, it always fires every second.
   &quot;&quot;&quot;
 
-  let _conn: MQTTConnection
+  let _conn: MQTTConnection[A, B, C]
 
-  new iso create(conn: MQTTConnection) =&gt;
+  new iso create(conn: MQTTConnection[A, B, C]) =&gt;
     _conn = conn
 
   fun ref apply(timer: Timer, count: U64): Bool =&gt;
     _conn._resend_packets()
     true
 
-class _MQTTReconnectTimer is TimerNotify
+class _MQTTReconnectTimer[A: Any iso = None iso, B: (None | _SSLContext[A] val) = None, C: (None | _SSLConnection[A]) = None] is TimerNotify
   &quot;&quot;&quot;
   Timer to handle lost connections, when `reconnect_time'` is set to a value
   greater than 0. Fires at the specified interval in seconds.
   &quot;&quot;&quot;
 
-  let _conn: MQTTConnection
+  let _conn: MQTTConnection[A, B, C]
 
-  new iso create(conn: MQTTConnection) =&gt;
+  new iso create(conn: MQTTConnection[A, B, C]) =&gt;
     _conn = conn
 
   fun ref apply(timer: Timer, count: U64): Bool =&gt;
@@ -1007,13 +1067,13 @@ class _MQTTReconnectTimer is TimerNotify
           </a>
         
         
-          <a href="../_connection_handler/" title="_connection_handler.pony" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../_ssl/" title="_ssl.pony" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                _connection_handler.pony
+                _ssl.pony
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -1043,7 +1103,7 @@ class _MQTTReconnectTimer is TimerNotify
       
     </div>
     
-    <script src="../../../assets/javascripts/application.6f02ae1b.js"></script>
+    <script src="../../../assets/javascripts/application.c1ad9e36.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
       

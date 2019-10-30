@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../assets/images/logo.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.5">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-ponylang-0.2.6">
     
     
       
@@ -40,13 +40,13 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.dfc6cb0c.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.b80b25f7.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.6079476c.css">
       
     
     
-      <script src="../assets/javascripts/modernizr.6586f7cd.js"></script>
+      <script src="../assets/javascripts/modernizr.0b5df86e.js"></script>
     
     
       <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -93,7 +93,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="../#_mqttreconnecttimer" tabindex="1" class="md-skip">
+      <a href="../#_mqttreconnecttimer91optional-a-any-iso-optional-b-none-val-_sslcontext91a93-val-optional-c-none-val-_sslconnection91a9393" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -317,8 +317,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../mqtt-_MQTTVersionDowngradable/" title="trait _MQTTVersionDowngradable" class="md-nav__link">
-      trait _MQTTVersionDowngradable
+    <a href="../mqtt-_MQTTVersionDowngradable/" title="interface _MQTTVersionDowngradable" class="md-nav__link">
+      interface _MQTTVersionDowngradable
     </a>
   </li>
 
@@ -713,6 +713,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../mqtt-MQTTConnectionInterface/" title="interface MQTTConnectionInterface" class="md-nav__link">
+      interface MQTTConnectionInterface
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../mqtt-MQTTConnection/" title="actor MQTTConnection" class="md-nav__link">
       actor MQTTConnection
     </a>
@@ -860,6 +872,30 @@
 
 
   <li class="md-nav__item">
+    <a href="../mqtt-_SSLContext/" title="interface _SSLContext" class="md-nav__link">
+      interface _SSLContext
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mqtt-_SSLConnection/" title="interface _SSLConnection" class="md-nav__link">
+      interface _SSLConnection
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../mqtt-_MQTTConnectionHandler/" title="class _MQTTConnectionHandler" class="md-nav__link">
       class _MQTTConnectionHandler
     </a>
@@ -968,6 +1004,18 @@
 
 
   <li class="md-nav__item">
+    <a href="../src/mqtt/connection_interface/" title="connection_interface.pony" class="md-nav__link">
+      connection_interface.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
     <a href="../src/mqtt/connection/" title="connection.pony" class="md-nav__link">
       connection.pony
     </a>
@@ -982,6 +1030,18 @@
   <li class="md-nav__item">
     <a href="../src/mqtt/_timer/" title="_timer.pony" class="md-nav__link">
       _timer.pony
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../src/mqtt/_ssl/" title="_ssl.pony" class="md-nav__link">
+      _ssl.pony
     </a>
   </li>
 
@@ -1108,11 +1168,11 @@
               
                 
                 
-                <h1 id="_mqttreconnecttimer">_MQTTReconnectTimer<a class="headerlink" href="#_mqttreconnecttimer" title="Permanent link">&para;</a></h1>
+                <h1 id="_mqttreconnecttimer91optional-a-any-iso-optional-b-none-val-_sslcontext91a93-val-optional-c-none-val-_sslconnection91a9393">_MQTTReconnectTimer[optional A: <a href="https://stdlib.ponylang.io/builtin-Any/">Any</a> iso, optional B: (<a href="https://stdlib.ponylang.io/builtin-None/">None</a> val | <a href="../mqtt-_SSLContext/">_SSLContext</a>[A] val), optional C: (<a href="https://stdlib.ponylang.io/builtin-None/">None</a> val | <a href="../mqtt-_SSLConnection/">_SSLConnection</a>[A])]<a class="headerlink" href="#_mqttreconnecttimer91optional-a-any-iso-optional-b-none-val-_sslcontext91a93-val-optional-c-none-val-_sslconnection91a9393" title="Permanent link">&para;</a></h1>
 <p><span class="source-link"><a href="../src/mqtt/_timer/#L35">[Source]</a></span></p>
 <p>Timer to handle lost connections, when <code>reconnect_time'</code> is set to a value
 greater than 0. Fires at the specified interval in seconds.</p>
-<pre><code class="pony">class ref _MQTTReconnectTimer is
+<pre><code class="pony">class ref _MQTTReconnectTimer[optional A: Any iso, optional B: (None val | _SSLContext[A] val), optional C: (None val | _SSLConnection[A])] is
   TimerNotify ref
 </code></pre>
 
@@ -1125,17 +1185,17 @@ greater than 0. Fires at the specified interval in seconds.</p>
 <h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
 <p><span class="source-link"><a href="../src/mqtt/_timer/#L43">[Source]</a></span></p>
 <pre><code class="pony">new iso create(
-  conn: MQTTConnection tag)
-: _MQTTReconnectTimer iso^
+  conn: MQTTConnection[A, B, C] tag)
+: _MQTTReconnectTimer[A, B, C] iso^
 </code></pre>
 
 <h4 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h4>
 <ul>
-<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a> tag</li>
+<li>conn: <a href="../mqtt-MQTTConnection/">MQTTConnection</a>[A, B, C] tag</li>
 </ul>
 <h4 id="returns">Returns<a class="headerlink" href="#returns" title="Permanent link">&para;</a></h4>
 <ul>
-<li><a href="./">_MQTTReconnectTimer</a> iso^</li>
+<li><a href="./">_MQTTReconnectTimer</a>[A, B, C] iso^</li>
 </ul>
 <hr />
 <h2 id="public-functions">Public Functions<a class="headerlink" href="#public-functions" title="Permanent link">&para;</a></h2>
@@ -1207,13 +1267,13 @@ greater than 0. Fires at the specified interval in seconds.</p>
           </a>
         
         
-          <a href="../mqtt-_MQTTConnectionHandler/" title="class _MQTTConnectionHandler" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../mqtt-_SSLContext/" title="interface _SSLContext" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                class _MQTTConnectionHandler
+                interface _SSLContext
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">
@@ -1243,7 +1303,7 @@ greater than 0. Fires at the specified interval in seconds.</p>
       
     </div>
     
-    <script src="../assets/javascripts/application.6f02ae1b.js"></script>
+    <script src="../assets/javascripts/application.c1ad9e36.js"></script>
       
       <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
       
